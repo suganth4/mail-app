@@ -28,5 +28,6 @@ export default {
 <style>
  #app1{
    display: flex;
+   justify-content: center;
  }
 </style>

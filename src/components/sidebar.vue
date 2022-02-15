@@ -9,8 +9,8 @@
         </div>
         <div id="bottom">
             <ul>
-                <li @click="change('Inbox')"><div><i class="fas fa-inbox"></i><span>Inbox</span></div><span id="inbox">2</span></li>
-                <li @click="change('Sent')"><div><i class="far fa-envelope"></i><span>Sent</span></div><span id="sent">1</span></li>
+                <li @click="change('Inbox')"><div><i class="fas fa-inbox"></i><span>Inbox</span></div><span id="inbox">{{ Inbox.length }}</span></li>
+                <li @click="change('Sent')"><div><i class="far fa-envelope"></i><span>Sent</span></div><span id="sent">{{ Sent.length }}</span></li>
                 <li @click="change('Important')"><div><i class="far fa-trash-alt"></i><span>Important</span></div><span id="important">{{ important.length }}</span></li>
                 <li @click="change('trash')"><div><i class="far fa-trash-alt"></i><span>Trash</span></div><span id="trash">{{ deletes.length }}</span></li>
             </ul>
