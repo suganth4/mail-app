@@ -19,8 +19,8 @@
             <div>
                 <button @click="back()" id="back"><i class="fas fa-arrow-left"></i>Back</button>
                 <button @click="remove(message)" id="delete" ref="delete"><i class="fas fa-sync-alt"></i>Delete</button>
-                <button @click="add"><i class="fas fa-sync-alt"></i>Mark as unread</button>
-                <button @click="add"><i class="fas fa-sync-alt"></i>Mark as read</button>
+                <button @click="read = !read" :class="{ unread : read, read: !read }" ><i class="fas fa-sync-alt"></i>Mark as unread</button>
+                <button @click="read = !read" :class="{ read: read, unread: !read }"><i class="fas fa-sync-alt"></i>Mark as read</button>
             </div>
             <div>
                 <div>
@@ -43,7 +43,8 @@ export default {
     data(){
         return {
             success: false,
-            message: ""
+            message: "",
+            read: true
         }
     },
     props:["deletes", "mail", "important"],
@@ -124,5 +125,13 @@ export default {
     #subject{
         display: grid;
         grid-template-columns: 150px 300px ;
+    }
+    .read{
+        background-color: blue;
+        opacity: 1;
+    }
+    .unread{
+        background-color:blue ;
+        opacity: 0.7;
     }
 </style>
