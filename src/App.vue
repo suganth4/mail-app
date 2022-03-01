@@ -24,7 +24,7 @@ export default {
   }
 }
 </script>
-
+home setting
 <style>
  #app1{
    display: flex;

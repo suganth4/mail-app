@@ -5,7 +5,7 @@
                 <button @click="add"><i class="fas fa-sync-alt"></i>Refresh</button>
             </div>
             <div id="grid">
-                <div class = "row" v-for="(data,index) in mail" :key="index">
+                <div :class="{ row:true, bold: data.isRead }" v-for="(data,index) in mail" :key="index">
                     <input type="checkbox">
                     <span @click="addImp($event, data)" :ref="data.subject" ><i class="far fa-star"></i></span>
                     <div id="subject" @click="hide(data)">
@@ -19,8 +19,8 @@
             <div>
                 <button @click="back()" id="back"><i class="fas fa-arrow-left"></i>Back</button>
                 <button @click="remove(message)" id="delete" ref="delete"><i class="fas fa-sync-alt"></i>Delete</button>
-                <button @click="read = !read" :class="{ unread : read, read: !read }" ><i class="fas fa-sync-alt"></i>Mark as unread</button>
-                <button @click="read = !read" :class="{ read: read, unread: !read }"><i class="fas fa-sync-alt"></i>Mark as read</button>
+                <button @click="isRead(message)" :class="{ unread : message.isRead, read: !message.isRead }" ><i class="fas fa-sync-alt"></i>Mark as unread</button>
+                <button @click="read = !read" :class="{ read: message.isRead, unread: !message.isRead }"><i class="fas fa-sync-alt"></i>Mark as read</button>
             </div>
             <div>
                 <div>
@@ -49,6 +49,9 @@ export default {
     },
     props:["deletes", "mail", "important"],
     methods : {
+        isRead() {
+            this.message.isRead = !this.message.isRead;
+        },
         back(){
             this.success = false
         },
@@ -133,5 +136,8 @@ export default {
     .unread{
         background-color:blue ;
         opacity: 0.7;
+    }
+    .bold{
+        font-weight: bold;
     }
 </style>
